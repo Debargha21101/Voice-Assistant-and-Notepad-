@@ -8,6 +8,8 @@ import datetime
 import wikipedia
 import webbrowser
 import os
+import pyautogui
+import keyboard
 import winshell
 import pyjokes
 import feedparser
@@ -26,6 +28,7 @@ from ecapture import ecapture as ec
 from bs4 import BeautifulSoup
 import win32com.client as wincl
 from urllib.request import urlopen
+from pytube import YouTube
 
 
 engine = pyttsx3.init("sapi5")
@@ -240,7 +243,7 @@ def takeCommanduser():
 
     try:
         query = r.recognize_google(audio, language="en-in")
-        print(f"Client to whome message is to be sent is : {query}\n")
+        print(f"Client to whom message is to be sent is : {query}\n")
 
     except Exception as e:
         print(e)
@@ -248,6 +251,97 @@ def takeCommanduser():
         speak("Unable to recognize Client Name")
         print("Check your Internet Connectivity")
     return query
+
+
+def openapps():
+    speak("Ok Sir , Wait A Second!")
+
+    if 'code' in query:
+        os.startfile("C:\\Users\\Root\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe")
+
+    elif 'Whatsapp' in query:
+        os.startfile("C:\\Users\\Root\\Desktop\\WhatsApp.lnk")
+
+    elif 'Word' in query:
+        os.startfile("C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Word.lnk")
+
+    elif 'chrome' in query:
+        os.startfile("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe")
+
+    elif 'facebook' in query:
+        webbrowser.open('https://www.facebook.com/')
+
+    elif 'instagram' in query:
+        webbrowser.open('https://www.instagram.com/')
+
+    elif 'maps' in query:
+        webbrowser.open('https://www.google.com/maps/@28.7091225,77.2749958,15z')
+
+    elif 'youtube' in query:
+        webbrowser.open('https://www.youtube.com')
+
+    speak("Your Command Has Been Completed Sir!")
+
+
+def closeapps():
+    speak("Ok Sir , Wait A second!")
+
+    if 'youtube' in query:
+            os.system("TASKKILL /F /im Chrome.exe")
+
+    elif 'chrome' in query:
+            os.system("TASKKILL /f /im Chrome.exe")
+
+    elif 'telegram' in query:
+            os.system("TASKKILL /F /im Telegram.exe")
+
+    elif 'code' in query:
+            os.system("TASKKILL /F /im code.exe")
+
+    elif 'instagram' in query:
+            os.system("TASKKILL /F /im chrome.exe")
+
+    speak("Your Command Has Been Succesfully Completed!")
+
+
+def YoutubeAuto():
+    speak("Whats Your Command ?")
+    comm = takeCommand()
+
+    if 'pause' in comm:
+        keyboard.press('space bar')
+    elif 'play  ' in comm:
+        keyboard.press('space bar')
+    elif 'restart' in comm:
+        keyboard.press('0')
+
+    elif 'mute' in comm:
+        keyboard.press('m')
+
+    elif 'skip' in comm:
+        keyboard.press('l')
+
+    elif 'back' in comm:
+        keyboard.press('j')
+
+    elif 'full screen' in comm:
+        keyboard.press('f')
+
+    elif 'film mode' in comm:
+        keyboard.press('t')
+
+    speak("Done Sir")
+
+
+def screenshot():
+    speak("Ok Boss , What Should I Name That File ?")
+    path = takeCommand()
+    path1name = path + ".png"
+    path1 = "C:\\Users\\user\\Desktop\\Speech_To_Text\\Voice-Notepad\\Windows" + path1name
+    kk = pyautogui.screenshot()
+    kk.save(path1name)
+    os.startfile("C:\\Users\\user\\Desktop\\Speech_To_Text\\Voice-Notepad\\Windows")
+    speak("Here Is Your ScreenShot")
 
 
 def takeCommandcontent():
@@ -301,6 +395,52 @@ def sendEmail(to, content):
     server.login("debargha51@gmail.com", "debarghanandi")
     server.sendmail("debarghashanewatson2001@gmail.com", to, content)
     server.close()
+
+
+def youtubeauto():
+    speak("Whats Your Command ?")
+    comm = takeCommand()
+
+    if 'pause' in comm:
+        keyboard.press('space bar')
+    elif 'play  ' in comm:
+        keyboard.press('space bar')
+    elif 'restart' in comm:
+        keyboard.press('0')
+
+    elif 'mute' in comm:
+        keyboard.press('m')
+
+    elif 'skip' in comm:
+        keyboard.press('l')
+
+    elif 'back' in comm:
+        keyboard.press('j')
+
+    elif 'full screen' in comm:
+        keyboard.press('f')
+
+    elif 'film mode' in comm:
+        keyboard.press('t')
+
+    speak("Done Sir")
+
+
+def chromeauto():
+    speak("Chrome Automation started!")
+    command = takeCommand()
+
+    if 'close this tab' in command:
+        keyboard.press_and_release('ctrl + w')
+
+    elif 'open new tab' in command:
+        keyboard.press_and_release('ctrl + t')
+
+    elif 'open new window' in command:
+        keyboard.press_and_release('ctrl + n')
+
+    elif 'history' in command:
+        keyboard.press_and_release('ctrl +h')
 
 
 if __name__ == "__main__":
@@ -494,6 +634,96 @@ if __name__ == "__main__":
         elif "open bluestack" in query:
             appli = r"C:\Users\Public\Desktop\BlueStacks 5"
             os.startfile(appli)
+
+        elif 'screenshot' in query:
+            screenshot()
+
+        elif 'open facebook' in query:
+            openapps()
+
+        elif 'open instagram' in query:
+            openapps()
+
+        elif 'open maps' in query:
+            openapps()
+
+        elif 'open code' in query:
+            openapps()
+
+        elif 'open youtube' in query:
+            openapps()
+
+        elif 'open WhatsApp' in query:
+            openapps()
+
+        elif 'open Word' in query:
+            openapps()
+
+        elif 'open chrome' in query:
+            openapps()
+
+        elif 'close chrome' in query:
+            closeapps()
+
+        elif 'close telegram' in query:
+            closeapps()
+
+        elif 'close instagram' in query:
+            closeapps()
+
+        elif 'close facebook' in query:
+            closeapps()
+
+        elif 'pause' in query:
+            keyboard.press('space bar')
+
+        elif 'restart' in query:
+            keyboard.press('0')
+
+        elif 'mute' in query:
+            keyboard.press('m')
+
+        elif 'skip' in query:
+            keyboard.press('l')
+
+        elif 'back' in query:
+            keyboard.press('j')
+
+        elif 'full screen' in query:
+            keyboard.press('f')
+
+        elif 'film mode' in query:
+            keyboard.press('t')
+
+        elif 'youtube tool' in query:
+            youtubeauto()
+
+        elif 'close the tab' in query:
+            chromeauto()
+
+        elif 'open new tab' in query:
+            chromeauto()
+
+        elif 'open new window' in query:
+            chromeauto()
+
+        elif 'history' in query:
+            chromeauto()
+
+        elif 'close youtube' in query:
+            os.system("TASKKILL /F /im Chrome.exe")
+
+        elif 'close chrome' in query:
+            os.system("TASKKILL /f /im Chrome.exe")
+
+        elif 'close telegram' in query:
+            os.system("TASKKILL /F /im Telegram.exe")
+
+        elif 'close code' in query:
+            os.system("TASKKILL /F /im code.exe")
+
+        elif 'close instagram' in query:
+            os.system("TASKKILL /F /im chrome.exe")
 
         elif "google news" in query:
             try:
@@ -690,5 +920,6 @@ if __name__ == "__main__":
 
         elif "Show project Report" in query:
             speak("Opening Minor Project Report")
-            projectre = r"C:\\Users\\Desktop\\Minor Project\\Presentation\\Project Report.docx"
+            projectre = r"C:\\Users\\user\\Desktop\\Speech_To_Text\\Voice-Notepad\\" \
+                        r"Voice Assistant and Notepad report.pdf"
             os.startfile(projectre)
