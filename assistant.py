@@ -690,5 +690,5 @@ if __name__ == "__main__":
 
         elif "Show project Report" in query:
             speak("Opening Minor Project Report")
-            projectre = r"C:\\Users\\GAURAV\\Desktop\\Minor Project\\Presentation\\Project Report.docx"
+            projectre = r"C:\\Users\\Desktop\\Minor Project\\Presentation\\Project Report.docx"
             os.startfile(projectre)
